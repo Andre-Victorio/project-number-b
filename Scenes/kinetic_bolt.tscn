@@ -1,0 +1,93 @@
+[gd_scene load_steps=8 format=3 uid="uid://bhxu7i66rsvvo"]
+
+[ext_resource type="Texture2D" uid="uid://3q2envsm3tvo" path="res://Resources/VFX/Yellow Effect Bullet Impact Explosion 32x32.png" id="1_4tie4"]
+[ext_resource type="Script" path="res://Scenes/kinetic_bolt.gd" id="2_6cdae"]
+
+[sub_resource type="Animation" id="Animation_f5y6u"]
+resource_name = "Explosion_1"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [156, 157, 158, 159, 160]
+}
+
+[sub_resource type="Animation" id="Animation_v48th"]
+resource_name = "Kinetic_Bolt_Start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [66, 67, 68, 69, 65]
+}
+
+[sub_resource type="Animation" id="Animation_00n6g"]
+resource_name = "Kinetic_Bolt_Sustain"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [68, 69]
+}
+
+[sub_resource type="Animation" id="Animation_2gqsc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [65]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6xgq"]
+_data = {
+"Explosion_1": SubResource("Animation_f5y6u"),
+"Kinetic_Bolt_Start": SubResource("Animation_v48th"),
+"Kinetic_Bolt_Sustain": SubResource("Animation_00n6g"),
+"RESET": SubResource("Animation_2gqsc")
+}
+
+[node name="KineticBolt" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(5.1875, 5.1875)
+texture = ExtResource("1_4tie4")
+hframes = 20
+vframes = 16
+frame = 65
+script = ExtResource("2_6cdae")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y6xgq")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

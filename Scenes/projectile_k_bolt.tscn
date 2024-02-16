@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1c2hofv30p5r"]
+
+[ext_resource type="PackedScene" uid="uid://bhxu7i66rsvvo" path="res://Scenes/kinetic_bolt.tscn" id="1_d3fy4"]
+[ext_resource type="Script" path="res://Scenes/projectile_k_bolt.gd" id="1_w66h1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k2w0a"]
+radius = 26.4764
+
+[node name="Projectile_KBolt" type="Area2D"]
+top_level = true
+script = ExtResource("1_w66h1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_k2w0a")
+debug_color = Color(0.952941, 0, 0.564706, 0.419608)
+
+[node name="KineticBolt" parent="." instance=ExtResource("1_d3fy4")]
+scale = Vector2(1.9375, 1.9375)

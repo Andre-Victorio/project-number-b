@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8okhovww663k"]
+
+[ext_resource type="Texture2D" uid="uid://cmdu578oxb6lt" path="res://icon.svg" id="1_0ag2n"]
+[ext_resource type="Script" path="res://Scenes/orb.gd" id="1_rtuqj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t87n2"]
+radius = 140.186
+
+[node name="Orb" type="Area2D"]
+script = ExtResource("1_rtuqj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_t87n2")
+
+[node name="pivot" type="Marker2D" parent="."]
+
+[node name="orb" type="Sprite2D" parent="pivot"]
+texture_filter = 1
+position = Vector2(44, -5.96046e-08)
+scale = Vector2(0.171875, 0.171875)
+texture = ExtResource("1_0ag2n")
+
+[node name="projectileSpawn" type="Marker2D" parent="pivot/orb"]
+unique_name_in_owner = true
+position = Vector2(-2.21946e-05, -5.81818)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
