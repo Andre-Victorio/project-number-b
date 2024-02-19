@@ -21,5 +21,6 @@ flip_h = true
 shape = SubResource("CircleShape2D_p7o21")
 
 [node name="Orb" parent="." instance=ExtResource("3_786hl")]
+z_index = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]

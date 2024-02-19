@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://331duttxfx6b"]
+[gd_scene load_steps=3 format=3 uid="uid://331duttxfx6b"]
 
 [ext_resource type="PackedScene" uid="uid://bpuyp8lqldmvl" path="res://Scenes/player.tscn" id="1_j6x8f"]
+[ext_resource type="PackedScene" uid="uid://b8mtaesw8wyug" path="res://Scenes/green_slime_enemy.tscn" id="2_e543o"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -17,3 +18,13 @@ grow_vertical = 2
 color = Color(0.443137, 0, 0.294118, 1)
 
 [node name="player" parent="." instance=ExtResource("1_j6x8f")]
+z_index = 1
+
+[node name="green_slime_enemy" parent="." instance=ExtResource("2_e543o")]
+position = Vector2(266, 265)
+
+[node name="green_slime_enemy2" parent="." instance=ExtResource("2_e543o")]
+position = Vector2(313, 165)
+
+[node name="green_slime_enemy3" parent="." instance=ExtResource("2_e543o")]
+position = Vector2(135, 174)

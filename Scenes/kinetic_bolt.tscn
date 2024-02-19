@@ -77,6 +77,7 @@ _data = {
 }
 
 [node name="KineticBolt" type="Sprite2D"]
+z_index = 2
 texture_filter = 1
 scale = Vector2(5.1875, 5.1875)
 texture = ExtResource("1_4tie4")
